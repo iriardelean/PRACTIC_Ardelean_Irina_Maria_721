@@ -13,6 +13,8 @@ public class EventController {
     private EventService service;
 
     @Autowired
+
+    // Aufgabe 1
     public EventController(EventService service) {
         this.service = service;
     }
@@ -27,6 +29,19 @@ public class EventController {
 
     public List<Event> getAllEvents() {
         return service.getAllEvents();
+    }
+
+    // Aufgabe 5
+    public void computeEventPoints(List<Event> events) {
+        for (int i = 0; i < 5 && i < events.size(); i++) {
+            Event event = events.get(i);
+            int computedPoints = service.computeEventPoints(event);
+
+            System.out.println("Event " + event.getId() +
+                    " -> rawPoints = " + event.getPoints() +
+                    " -> computedPoints = " + computedPoints);
+        }
+
     }
 
 }

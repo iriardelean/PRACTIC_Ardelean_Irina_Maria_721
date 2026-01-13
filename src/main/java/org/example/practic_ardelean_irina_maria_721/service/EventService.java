@@ -3,6 +3,7 @@ package org.example.practic_ardelean_irina_maria_721.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.practic_ardelean_irina_maria_721.model.Event;
+import org.example.practic_ardelean_irina_maria_721.model.EventType;
 import org.example.practic_ardelean_irina_maria_721.model.Tribute;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,22 @@ public class EventService {
     public List<Event> getAllEvents() {
         return events;
     }
+
+    // Aufgabe 5
+    // point system for event types
+    public int computeEventPoints(Event event) {
+        int points = event.getPoints();
+        int day = event.getDay();
+        EventType type = event.getType();
+
+        return switch (type) {
+            case FOUND_SUPPLIES -> points + 2 * day;
+            case INJURED -> points - day;
+            case ATTACK -> points * 2 + day;
+            case HELPED_ALLY -> points + 5;
+            case SPONSORED -> points + 10;
+            default -> points;
+        };
+    }
+
 }

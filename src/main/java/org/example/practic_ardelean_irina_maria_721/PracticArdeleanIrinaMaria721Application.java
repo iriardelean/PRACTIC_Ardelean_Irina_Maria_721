@@ -3,6 +3,7 @@ package org.example.practic_ardelean_irina_maria_721;
 import org.example.practic_ardelean_irina_maria_721.controller.EventController;
 import org.example.practic_ardelean_irina_maria_721.controller.SponsorController;
 import org.example.practic_ardelean_irina_maria_721.controller.TributeController;
+import org.example.practic_ardelean_irina_maria_721.model.Event;
 import org.example.practic_ardelean_irina_maria_721.model.Tribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -64,7 +65,10 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
             tributeController.writeTributesSortedToFile(outputFile);
             System.out.println("Sorted tributes written to " + outputFile);
 
-
+            // Aufgabe 5
+            System.out.println("Computed points for the first 5 events: ");
+            List<Event> events = eventController.getAllEvents();
+            eventController.computeEventPoints(events);
 
 
         } catch (Exception e) {
