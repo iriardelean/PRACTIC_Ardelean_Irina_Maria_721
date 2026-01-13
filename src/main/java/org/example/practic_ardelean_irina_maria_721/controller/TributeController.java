@@ -51,4 +51,9 @@ public class TributeController {
             System.out.println(tribute);
         }
     }
+
+    //Aufgabe 4
+    public void writeTributesSortedToFile(String outputFile) throws IOException {
+        service.writeTributesSortedToFile(outputFile);
+    }
 }

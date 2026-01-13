@@ -53,5 +53,16 @@ public class TributeService {
                 .collect(Collectors.toList());
     }
 
+    // Aufgabe 4
+    // print result from aufgabe 3 in file tributes_sorted.txt
+    public void writeTributesSortedToFile(String outputFile) throws IOException {
+        List<Tribute> sortedTributes = getTributesSortedBySkillLevel();
+        try (var writer = new java.io.PrintWriter(outputFile)) {
+            for (var tribute : sortedTributes) {
+                writer.println(tribute);
+            }
+        }
+    }
+
 
 }

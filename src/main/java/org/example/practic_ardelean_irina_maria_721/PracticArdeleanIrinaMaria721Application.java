@@ -59,6 +59,11 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
             System.out.println("Tributes sorted by skill level:");
             tributeController.getTributesSortedBySkillLevel();
 
+            // Aufgabe 4
+            String outputFile = "tributes_sorted.txt";
+            tributeController.writeTributesSortedToFile(outputFile);
+            System.out.println("Sorted tributes written to " + outputFile);
+
 
 
 
