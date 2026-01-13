@@ -26,6 +26,9 @@ public class Tribute {
         this.skillLevel = skillLevel;
     }
 
+    // Parameterlosen Konstruktor fur Jackson
+    public Tribute() {}
+
     @Override
     public String toString() {
         return "Tribute{" +

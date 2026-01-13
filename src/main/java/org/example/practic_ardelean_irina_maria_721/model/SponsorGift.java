@@ -26,6 +26,9 @@ public class SponsorGift {
         this.day = day;
     }
 
+    // Parameterlosen Konstruktor fur Jackson
+    public SponsorGift() {}
+
     @Override
     public String toString() {
         return "SponsorGift{" +
