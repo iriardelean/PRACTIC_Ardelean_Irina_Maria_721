@@ -55,6 +55,10 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
             int number = Integer.parseInt(scanner.nextLine());
             tributeController.getAliveTributesByDistrictNumber(number);
 
+            // Aufgabe 3
+            System.out.println("Tributes sorted by skill level:");
+            tributeController.getTributesSortedBySkillLevel();
+
 
 
 

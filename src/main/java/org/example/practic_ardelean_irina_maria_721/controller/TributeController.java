@@ -17,6 +17,7 @@ public class TributeController {
         this.service = service;
     }
 
+    // Aufgabe 1
     public void loadTributes(String filePath) throws IOException {
         service.loadTributes(filePath);
     }
@@ -35,8 +36,17 @@ public class TributeController {
         }
     }
 
+    // Aufgabe 2
     public void getAliveTributesByDistrictNumber(int d) {
         List<Tribute> tributes = service.getAliveTributesByDistrictNumber(d);
+        for (Tribute tribute : tributes) {
+            System.out.println(tribute);
+        }
+    }
+
+    // Aufgabe 3
+    public void getTributesSortedBySkillLevel() {
+        List<Tribute> tributes = service.getTributesSortedBySkillLevel();
         for (Tribute tribute : tributes) {
             System.out.println(tribute);
         }

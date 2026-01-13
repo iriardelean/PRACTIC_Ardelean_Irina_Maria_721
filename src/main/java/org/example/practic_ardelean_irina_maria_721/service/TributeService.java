@@ -42,5 +42,16 @@ public class TributeService {
                 .collect(Collectors.toList());
     }
 
+    //Aufgabe 3
+    // sort tributes desc by skill level, for ties alphabetically by name
+    public List<Tribute> getTributesSortedBySkillLevel() {
+        return tributes.stream()
+                .sorted((t1, t2) -> {
+                    int skillComp = Integer.compare(t2.getSkillLevel(), t1.getSkillLevel());
+                    return (skillComp != 0) ? skillComp : t1.getName().compareTo(t2.getName());
+                })
+                .collect(Collectors.toList());
+    }
+
 
 }
