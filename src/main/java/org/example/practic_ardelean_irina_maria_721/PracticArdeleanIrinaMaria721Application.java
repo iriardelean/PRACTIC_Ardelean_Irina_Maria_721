@@ -5,6 +5,7 @@ import org.example.practic_ardelean_irina_maria_721.controller.SponsorController
 import org.example.practic_ardelean_irina_maria_721.controller.TributeController;
 import org.example.practic_ardelean_irina_maria_721.model.Event;
 import org.example.practic_ardelean_irina_maria_721.model.Tribute;
+import org.example.practic_ardelean_irina_maria_721.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,9 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
 
     @Autowired
     private SponsorController sponsorController;
+
+    @Autowired
+    private EventService eventService;
 
     public static void main(String[] args) {
         SpringApplication.run(PracticArdeleanIrinaMaria721Application.class, args);
@@ -69,6 +73,10 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
             System.out.println("Computed points for the first 5 events: ");
             List<Event> events = eventController.getAllEvents();
             eventController.computeEventPoints(events);
+
+            // Aufgabe 6
+            tributeController.printTop5Tributes(eventController.getAllEvents(), sponsorController.getAllGifts(), eventService);
+
 
 
         } catch (Exception e) {

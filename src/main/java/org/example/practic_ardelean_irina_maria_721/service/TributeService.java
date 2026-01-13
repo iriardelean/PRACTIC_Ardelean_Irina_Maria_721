@@ -2,13 +2,18 @@ package org.example.practic_ardelean_irina_maria_721.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.practic_ardelean_irina_maria_721.controller.EventController;
+import org.example.practic_ardelean_irina_maria_721.model.Event;
+import org.example.practic_ardelean_irina_maria_721.model.SponsorGift;
 import org.example.practic_ardelean_irina_maria_721.model.Tribute;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,6 +67,42 @@ public class TributeService {
                 writer.println(tribute);
             }
         }
+    }
+
+    // Aufgabe 6
+    // rank tributes by totalScore = Summe(computedPoints aus den Events des Tributs)
+    //+ Summe(value aus den SponsorGeschenken des Tributs)
+    public List<Map.Entry<Tribute, Integer>> getTop5Tributes(List<Event> events, List<SponsorGift> gifts, EventService eventService) {
+        Map<Tribute, Integer> tributeScores = new HashMap<>();
+
+        for (Tribute tribute : tributes) {
+            int score = 0;
+
+            for (Event event : events) {
+                if (event.getTributeId() == tribute.getId()) {
+                    score += eventService.computeEventPoints(event);
+                }
+            }
+
+            for (SponsorGift gift : gifts) {
+                if (gift.getTributId() == tribute.getId()) {
+                    score += gift.getValue();
+                }
+            }
+
+            tributeScores.put(tribute, score);
+        }
+
+        return tributeScores.entrySet().stream()
+                .sorted((e1, e2) -> {
+                    int scoreCompare = e2.getValue().compareTo(e1.getValue()); //
+                    if (scoreCompare == 0) {
+                        return e1.getKey().getName().compareTo(e2.getKey().getName());
+                    }
+                    return scoreCompare;
+                })
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
 
