@@ -9,7 +9,7 @@ public class Tribute {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("distrikt")
+    @JsonProperty("district")
     private int distrikt;
 
     @JsonProperty("status")
@@ -31,13 +31,7 @@ public class Tribute {
 
     @Override
     public String toString() {
-        return "Tribute{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", distrikt=" + distrikt +
-                ", status=" + status +
-                ", skillLevel=" + skillLevel +
-                '}';
+        return id + " | "  + name + " | D" + distrikt + " | " + status + " | skill=" + skillLevel + "";
     }
 
     public int getId() {

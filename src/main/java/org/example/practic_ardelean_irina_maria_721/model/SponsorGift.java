@@ -6,7 +6,7 @@ public class SponsorGift {
     @JsonProperty("id")
     private int id;
 
-    @JsonProperty("tributId")
+    @JsonProperty("tributeId")
     private int tributId;
 
     @JsonProperty("itemName")
