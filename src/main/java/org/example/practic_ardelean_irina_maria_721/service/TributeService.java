@@ -9,11 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TributeService {
     private List<Tribute> tributes = new ArrayList<>();
 
+    // Aufgabe 1
     // Load data from tributes.json file
     public void loadTributes(String filePath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -31,7 +33,14 @@ public class TributeService {
         return tributes;
     }
 
-
+    // Aufgabe 2
+    // get tributes by district number and status "alive"
+    public List<Tribute> getAliveTributesByDistrictNumber(int district) {
+        return tributes.stream()
+                .filter(tribute -> !(tribute.getDistrikt() == 0) && tribute.getDistrikt() == district)
+                .filter(tribute -> "alive".equalsIgnoreCase(String.valueOf(tribute.getStatus())))
+                .collect(Collectors.toList());
+    }
 
 
 }

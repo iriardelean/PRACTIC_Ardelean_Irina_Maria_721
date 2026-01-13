@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class PracticArdeleanIrinaMaria721Application implements CommandLineRunner {
@@ -31,6 +32,7 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
         System.out.println("--- HUNGER GAMES SPRING BOOT APPLICATION ---");
 
         try {
+            // Aufgabe 1
             String eventsFilePath = "events.json";
             String tributesFilePath = "tributes.json";
             String sponsorsFilePath = "gifts.json";
@@ -46,6 +48,15 @@ public class PracticArdeleanIrinaMaria721Application implements CommandLineRunne
             System.out.println("Gifts loaded: " + sponsorController.getNumberOfGifts());
 
             tributeController.printTributes(tributes);
+
+            // Aufgabe 2
+            System.out.println("Enter district number to get alive tributes:");
+            Scanner scanner = new Scanner(System.in);
+            int number = Integer.parseInt(scanner.nextLine());
+            tributeController.getAliveTributesByDistrictNumber(number);
+
+
+
 
         } catch (Exception e) {
             System.err.println("CRITICAL ERROR: " + e.getMessage());

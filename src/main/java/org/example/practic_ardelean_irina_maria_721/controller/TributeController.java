@@ -34,4 +34,11 @@ public class TributeController {
             System.out.println(tribute);
         }
     }
+
+    public void getAliveTributesByDistrictNumber(int d) {
+        List<Tribute> tributes = service.getAliveTributesByDistrictNumber(d);
+        for (Tribute tribute : tributes) {
+            System.out.println(tribute);
+        }
+    }
 }
